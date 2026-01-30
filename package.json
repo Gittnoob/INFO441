@@ -9,7 +9,10 @@
   "dependencies": {
     "cookie-parser": "^1.0.0",
     "debug": "~2.6.9",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "mongodb": "^7.0.0",
+    "mongoose": "^9.1.5",
     "morgan": "^1.10.1",
     "node-fetch": "^3.3.2",
     "node-html-parser": "^7.0.2"
