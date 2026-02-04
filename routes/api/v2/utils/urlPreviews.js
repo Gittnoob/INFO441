@@ -1,6 +1,15 @@
 import fetch from 'node-fetch';
 import { parse } from 'node-html-parser';
 
+const escapeHTML = str => String(str).replace(/[&<>'"]/g, 
+    tag => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;'
+    }[tag]));
+
 async function getURLPreview(url){
   try {
     if (!url) {
@@ -76,7 +85,8 @@ async function getURLPreview(url){
     // creates the html to be send back
 
     let description = '';
-    if(ogInfo.description) description = `<p>${ogInfo.description}</p>`
+    if(ogInfo.description) 
+      description = `<p>${escapeHTML(ogInfo.description)}</p>`
     let image = '';
     if(ogInfo.image) {
       const altText = imageAlt ||  `Preview image for ${ogInfo.title}`;
