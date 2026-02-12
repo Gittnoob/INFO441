@@ -45,6 +45,8 @@ const authProvider = await WebAppAuthProvider.initialize({
     }
 });
 
+app.use(express.static(path.join(__dirname, 'public 3')));
+
 app.use(authProvider.authenticate({
     protectAllRoutes: false, // force user to authenticate for all routes
     acquireTokenForResources: { // acquire an access token for this resource
@@ -56,9 +58,6 @@ app.use(authProvider.authenticate({
 }));
 
 app.use(authProvider.interactionErrorHandler()); // this middleware handles interaction required errors
-
-
-app.use(express.static(path.join(__dirname, 'public 3')));
 
 app.use((req, res, next) => {
     req.models = models;
