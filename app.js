@@ -46,6 +46,7 @@ const authProvider = await WebAppAuthProvider.initialize({
 });
 
 app.use(express.static(path.join(__dirname, 'public 3')));
+app.enable('trust proxy');
 
 app.use(authProvider.authenticate({
     protectAllRoutes: false, // force user to authenticate for all routes
