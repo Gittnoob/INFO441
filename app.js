@@ -5,7 +5,6 @@ import logger from 'morgan';
 import sessions from 'express-session';
 import { WebAppAuthProvider } from 'msal-node-wrapper'
 
-
 import models from "./models.js"
 // import indexRouter from './public 3/javascripts/index.js';
 import apiv3Router from './routes/api/v3/apiv3.js';
@@ -45,7 +44,7 @@ const authProvider = await WebAppAuthProvider.initialize({
     }
 });
 
-app.use(express.static(path.join(__dirname, 'public 3')));
+app.use(express.static(path.join(__dirname, 'public 4')));
 app.enable('trust proxy');
 
 app.use(authProvider.authenticate({

@@ -62,16 +62,3 @@ async function displayError(){
     document.getElementById('errorInfo').innerText= ''
     document.getElementById('errorInfo').style.opacity = 0
 }
-
-function createPostsHtml(postsJson){
-    let postsHtml = postsJson.map(postInfo => {
-        return `
-        <div class="post">
-            ${postInfo.description}
-            ${postInfo.htmlPreview}
-            <div><a href="/userInfo.html?user=${encodeURIComponent(postInfo.username)}">${escapeHTML(postInfo.username)}</a></div>
-        </div>`
-    }).join("\n");
-
-    return postsHtml;
-}
