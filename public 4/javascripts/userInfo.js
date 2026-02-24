@@ -4,9 +4,16 @@ async function init(){
 }
 
 async function saveUserInfo(){
-    //TODO: do an ajax call to save whatever info you want about the user from the user table
-    //see postComment() in the index.js file as an example of how to do this
+    const bio = document.getElementById("bio-input").value;
+
+    await fetchJSON(`api/${apiVersion}/userInfo`, {
+        method: "POST",
+        body: { bio }
+    });
+
+    loadUserInfo();
 }
+
 
 async function loadUserInfo(){
     const urlParams = new URLSearchParams(window.location.search);
@@ -20,7 +27,12 @@ async function loadUserInfo(){
         document.getElementById("user_info_new_div").classList.add("d-none");
     }
     
-    //TODO: do an ajax call to load whatever info you want about the user from the user table
+        const userInfo = await fetchJSON(`api/${apiVersion}/userInfo?username=${encodeURIComponent(username)}`);
+        document.getElementById("bio-span").innerText = userInfo.bio || "";
+
+    if(username == myIdentity){
+        document.getElementById("bio-input").value = userInfo.bio || "";
+    }
 
     loadUserInfoPosts(username)
 }

@@ -24,8 +24,15 @@ const commentSchema = new mongoose.Schema({
     created_date: Date
 })
 
+const userInfoSchema = new mongoose.Schema({
+    username: { type: String, unique: true },
+    bio: String,
+    updated_date: Date
+});
+
 const Post = mongoose.model('Post', postSchema);
 const Comment = mongoose.model('Comment', commentSchema);
+const UserInfo = mongoose.model('UserInfo', userInfoSchema);
 
-const models = { Post, Comment };
+const models = { Post, Comment, UserInfo };
 export default models;

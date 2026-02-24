@@ -66,8 +66,6 @@ async function postUrl(){
     
 }
 
-
-
 let lastTypedUrl = ""
 let lastTypedTime = Date.now();
 let lastURLPreviewed = "";
